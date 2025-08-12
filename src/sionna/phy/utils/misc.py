@@ -172,6 +172,7 @@ def ebnodb2no(ebno_db,
               num_bits_per_symbol,
               coderate,
               resource_grid=None,
+              Es=1.,
               precision=None):
     r"""Computes the noise variance `No` for a given `Eb/No` in dB
 
@@ -232,7 +233,7 @@ def ebnodb2no(ebno_db,
     ten = tf.cast(10, rdtype)
     ebno = tf.math.pow(ten, ebno_db/ten)
 
-    energy_per_symbol = 1.
+    energy_per_symbol = Es
     if resource_grid is not None:
         # Divide energy per symbol by the number of transmitted streams
         energy_per_symbol /= resource_grid.num_streams_per_tx
