@@ -69,7 +69,8 @@ class ResourceGrid(Object):
                  dc_null=False,
                  pilot_pattern=None,
                  pilot_ofdm_symbol_indices=None,
-                 precision=None):
+                 precision=None,
+                 normalize_pilots=True):
         super().__init__(precision=precision)
         self._num_ofdm_symbols = num_ofdm_symbols
         self._fft_size = fft_size
@@ -80,6 +81,7 @@ class ResourceGrid(Object):
         self._num_guard_carriers = np.array(num_guard_carriers)
         self._dc_null = dc_null
         self._pilot_ofdm_symbol_indices = pilot_ofdm_symbol_indices
+        self._normalize_pilots = normalize_pilots
         self.pilot_pattern = pilot_pattern
         self._check_settings()
 
@@ -253,7 +255,8 @@ class ResourceGrid(Object):
                     "You must provide pilot_ofdm_symbol_indices."
                 value = KroneckerPilotPattern(self,
                         self._pilot_ofdm_symbol_indices,
-                        precision=self.precision)
+                        precision=self.precision,
+                        normalize=self._normalize_pilots)
         else:
             raise ValueError("Unsupported pilot_pattern")
         self._pilot_pattern = value
