@@ -277,11 +277,11 @@ class Constellation(Block):
         self._points = None
         if self.constellation_type == "qam":
             points = qam(self.num_bits_per_symbol,
-                         normalize=True,
+                         normalize=normalize,
                          precision=precision)
         elif self.constellation_type == "pam":
             points = pam(self.num_bits_per_symbol,
-                         normalize=True,
+                         normalize=normalize,
                          precision=precision)
         self.points = points
 
