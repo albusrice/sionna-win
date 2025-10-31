@@ -331,6 +331,7 @@ def sim_ber(mc_fun,
             ebno_dbs,
             batch_size,
             max_mc_iter,
+            sym_type = "BER",
             soft_estimates=False,
             num_target_bit_errors=None,
             num_target_block_errors=None,
@@ -550,7 +551,7 @@ def sim_ber(mc_fun,
 
      # init table headers
     header_text = [
-        "EbNo [dB]", "BER", "BLER", "bit errors", "num bits",
+        "EbNo [dB]", sym_type, "BLER", "bit errors", "num bits",
         "block errors", "num blocks", "runtime [s]", "status"
     ]
 
