@@ -242,7 +242,7 @@ class Constellation(Block):
                  constellation_type,
                  num_bits_per_symbol,
                  points=None,
-                 normalize=False,
+                 normalize=True, # Do not change pusch default
                  center=False,
                  precision=None,
                  **kwargs):
